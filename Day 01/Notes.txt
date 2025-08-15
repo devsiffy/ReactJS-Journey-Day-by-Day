@@ -1,0 +1,164 @@
+
+:: Day 01 ::
+
+
+==============================
+1. Traditional React App
+==============================
+
+How to Create:
+--------------
+- Open terminal or command prompt, and run this command:
+  npx create-react-app my-app
+
+- Go into the project:
+  cd my-app
+
+- Start the project:
+  npm run start
+
+
+Main Files and Folders:
+------------------------
+- package.json
+  > Contains project info and list of all needed packages.
+
+- package-lock.json
+  > Keeps track of the exact versions of packages installed.
+
+- node_modules/
+  > This folder has all the code of installed packages.
+  > We NEVER push this folder to GitHub. It is too big.
+  > If this folder is deleted, we can bring it back using:
+    npm install
+
+- public/index.html
+  > The main HTML file. React renders inside this.
+
+- src/index.js
+  > Entry file. React app starts from here.
+
+- src/App.js
+  > Main React component. You write your app here.
+
+
+Other Info:
+-----------
+- Uses Webpack (behind the scenes).
+- A bit slow to start.
+- Good for learning basics.
+
+
+===========================
+2. Vite React App
+===========================
+
+How to Create:
+--------------
+- Open terminal or command prompt
+- Run these commands:
+  npm create vite@latest my-vite-app
+  (Choose "React" and then "JavaScript" or "TypeScript")
+
+- Go into the project:
+  cd my-vite-app
+
+- Install required packages:
+  npm install
+
+- Start the project:
+  npm run dev
+
+
+Main Files and Folders:
+------------------------
+- package.json
+  > Contains project info and list of packages.
+
+- package-lock.json
+  > Keeps track of exact versions.
+
+- node_modules/
+  > Folder for installed packages (same as in traditional app).
+  > Don’t push to GitHub. Use `npm install` to bring it back.
+
+- vite.config.js
+  > Config file for Vite. Can change settings here (optional).
+
+- index.html (in root folder)
+  > Root HTML file. Directly used by Vite.
+
+- src/main.jsx
+  > Entry file. React app starts from here.
+
+- src/App.jsx
+  > Main component. You write your app here.
+
+
+Other Info:
+-----------
+- Very fast startup and build.
+- Uses ESBuild (faster than Webpack).
+- Clean and simple project structure.
+- Best choice for modern React apps.
+
+
+=================================
+3. node_modules Folder (Important)
+=================================
+
+- This folder has all downloaded packages (like React, Vite etc.)
+- It is auto-created when you run:
+  npm install
+
+- This folder is big, so we NEVER upload it to GitHub.
+
+- Instead, we only upload `package.json` and `package-lock.json`.
+  These files help others recreate `node_modules` using:
+  npm install
+
+- Think of node_modules like a "downloaded tools" folder.
+
+
+===============================
+4. .gitignore File (Important)
+===============================
+
+- This file tells Git what to ignore (not track or push).
+- It should have this line:
+  node_modules/
+
+- If this line is missing, you might push a huge folder by mistake.
+
+- When you create project with create-react-app or Vite, 
+  this file is created automatically.
+
+
+===========================
+5. Summary of Differences
+===========================
+
+| Feature           | Traditional React      | Vite React           |
+|-------------------|------------------------|----------------------|
+| Setup Speed       | Slower                 | Very fast            |
+| Tool              | Webpack                | ESBuild              |
+| HTML File         | public/index.html      | index.html (root)    |
+| Entry File        | src/index.js           | src/main.jsx         |
+| Start Command     | npm start              | npm run dev          |
+| Modern Choice     | Less modern            | Recommended          |
+
+
+===========================
+6. Final Notes
+===========================
+
+- Always run `npm install` after cloning a project from GitHub.
+
+- Use `npm start` (traditional) or `npm run dev` (Vite) to run the app.
+
+- Do NOT push `node_modules` folder to GitHub.
+
+- Learn the structure of your React app. It helps in writing and fixing code.
+
+- Vite is faster and cleaner. It is best for most new projects.
+
