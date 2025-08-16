@@ -1,0 +1,194 @@
+
+:: Day 02 ::
+
+
+=====================
+Traditional React App
+=====================
+
+First learns about **Create React App (CRA)**.
+
+> CRA is a tool that sets up everything needed to start a React app.
+
+They type:
+> npx create-react-app my-app
+
+This creates folders and files:
+- public/index.html
+- src/index.js
+- src/App.js
+- node_modules/
+- package.json
+
+Let’s see how the React app runs inside the browser.
+
+> Browser always needs HTML file first.  
+> Inside index.html, there is a simple line:
+
+  <div id="root"></div>
+
+This is the only page. The React app uses this div to show everything.
+
+In index.js, React writes:
+  ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+
+This means:
+> "Hey browser, find that root div and show the App component inside it."
+
+Then App.js runs. It returns some JSX like:
+  return <h1>Hello React</h1>
+
+> JSX looks like HTML but it’s written in JavaScript.  
+> React changes JSX to real HTML using a tool called **Babel**.
+
+CSS files like App.css are also added using:
+  import './App.css'
+
+> React does not touch CSS much — it just tells browser to load it.
+
+React uses a system called **Virtual DOM**.
+
+> Virtual DOM is like a fake copy of real DOM in memory.  
+> React compares old and new versions (called "diffing").  
+> Only the changes are updated in the real DOM.  
+> This makes it fast and smooth.
+
+Now, what is **react-scripts**?
+
+> It’s a package that CRA uses in the background.  
+> When you run "npm start", it uses react-scripts to:
+  - Build the app using Webpack
+  - Convert JSX with Babel
+  - Start a local server
+  - Show your app in the browser
+
+
+=========================
+Some Basic Rules in React
+=========================
+
+> Component names must start with capital letters. Example: App, Header  
+> File names usually match component names. Example: App.js  
+> Use .js or .jsx extension for JSX files  
+> Each file should return one component  
+> If you want to return multiple elements, use Fragments: <> </>
+
+
+=========================
+Why React is Called a SPA
+=========================
+
+SPA = Single Page Application
+
+> React apps load only one HTML page (index.html).  
+> When you go to a new section, React updates the view without reloading the page.  
+> It feels fast and smooth because only parts of the screen update.
+
+
+====================
+SEO Problem in React
+====================
+
+> React apps are not great for SEO out of the box.  
+> Why? Because content is loaded using JavaScript.  
+> Some search engines may not see it well.  
+> To fix this, tools like Next.js are used for **Server Side Rendering (SSR)**.
+
+
+==============
+Vite React App
+==============
+
+Later, the developer hears about **Vite**, a new tool that is faster.
+
+They run:
+> npm create vite@latest
+
+This gives a React setup too — but different from CRA.
+
+No more react-scripts!
+
+> Vite uses modern ES modules and faster tools like **esbuild**  
+> Starts the app super fast  
+> No hidden configs — more transparent
+
+In Vite app, you see:
+- index.html (in root folder)
+- main.jsx
+- App.jsx
+
+How it works:
+> index.html has <div id="root"> just like CRA  
+> main.jsx connects the App component to that root div  
+> App.jsx contains the first visible part of the app
+
+CSS is added the same way:
+  import './App.css'
+
+JSX and Virtual DOM are same as CRA — because React is same.
+
+
+=================
+Fragments and JSX
+=================
+
+What if you want to return two tags?
+
+Normally, this gives an error:
+  return (
+    <h1>Hello</h1>
+    <p>Welcome</p>
+  )
+
+React needs a single parent. You can fix it using:
+  return (
+    <>
+      <h1>Hello</h1>
+      <p>Welcome</p>
+    </>
+  )
+
+> This is called a Fragment  
+> It helps group elements without extra divs
+
+JSX is like writing HTML inside JavaScript.
+
+> But it's not real HTML — it becomes JS objects behind the scenes  
+> Babel converts JSX into code browser can understand
+
+
+============================================
+Behind the Scene: How React Loads in Browser
+============================================
+
+1. Browser loads index.html (from public/ or root)
+2. Sees <div id="root">
+3. Loads JavaScript file (index.js or main.jsx)
+4. That file runs React code
+5. React creates components using JSX
+6. JSX is turned into JavaScript
+7. JavaScript tells browser what HTML to show
+8. CSS is added using import
+9. React updates only parts of screen using Virtual DOM
+
+
+===============
+Important Terms
+===============
+
+| Term             | Meaning                                                                  |
+|------------------|--------------------------------------------------------------------------|
+| SPA              | Single Page Application (One HTML page only)                             |
+| Virtual DOM      | Fake copy of real DOM to find changes faster                             |
+| JSX              | JavaScript + HTML syntax                                                 |
+| Babel            | Converts JSX into JavaScript                                             |
+| Webpack          | Joins many files into fewer files (used in CRA)                          |
+| ESBuild          | Fast bundler used by Vite                                                |
+| Component        | A small reusable part of UI (like Header, Button)                        |
+| Fragment         | Empty wrapper: <> </>                                                    |
+| ReactDOM         | Tool that connects React with the browser                                |
+| SSR              | Server Side Rendering (used for SEO)                                     |
+| CSR              | Client Side Rendering (default React style)                              |
+| Mounting         | When a component shows for the first time                                |
+| Rendering        | When JSX turns into real HTML                                            |
+
