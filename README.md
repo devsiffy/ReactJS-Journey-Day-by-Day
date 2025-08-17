@@ -1,4 +1,4 @@
-<h2>⚛️ ReactJS – A Daily Learning Journey 🚀</h2>
+<h2>⚛️ React JS – A Daily Learning Journey 🚀</h2>
 
 <h3>📅 Day 01</h3>
 
@@ -48,3 +48,32 @@
 
     - Babel, Webpack, ESBuild
     - react-scripts, ReactDOM, CSR vs SSR
+
+---
+
+<h3>📅 Day 03</h3>
+
+> _"To truly understand a tool, build a simpler version of it yourself."_
+
+1.  **custom-react-app**
+
+    - Understanding how React works
+    - Creating our own render system (`customRender`)
+    - Understanding our custom React element
+      <br />
+
+2.  **vite-react-app**
+
+    - How JSX really works (behind the scenes)
+    - What does `React.createElement()` do?
+    - What is `React.render()` or `createRoot().render()`?
+    - Why JSX allows only expressions (not if/else or loops)
+      <br />
+
+3.  **vite-react-app-2**
+
+    - Discovering Hooks in React
+    - Why were Hooks introduced?
+    - What problems do Hooks solve?
+    - How does `useState` work?
+    - What makes React more powerful than classical JavaScript?

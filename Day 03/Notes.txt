@@ -1,0 +1,301 @@
+
+:: Day 03 ::
+
+
+================
+custom-react-app
+================
+
+-----------------------------
+Understanding how React works
+-----------------------------
+
+Let’s imagine we are building our own mini version of React — not using the React library, just pure JavaScript.
+
+Why are we doing this?
+
+Because when we build something ourselves, we understand how it actually works inside.
+
+So in this folder, we’re trying to create a simple web app without React, but using the **same concept** React uses — by defining UI as an object and then rendering it into the browser.
+
+This helps us clearly see what React is really doing behind the scenes when it renders elements.
+
+We are not using JSX here — we are writing an object manually that represents our HTML element.
+
+
+---------------------------------------------
+Creating our own render system (customRender)
+---------------------------------------------
+
+React has a special function that takes an object and turns it into real HTML on the screen.
+
+So we are building something similar called `customRender`.
+
+This function takes two things:
+
+    1. An element object (like a button, link, heading)
+    2. A container in the HTML (like a div where we want to insert the element)
+
+Inside the function, we do a few steps:
+
+    * We create a new tag using the "type" from the object (like 'a' or 'div')
+    * We add the content inside using "children"
+    * Then we loop over the "props" and set all the attributes one by one (like href, target)
+    * Finally, we add this new element into the page using appendChild()
+
+This may sound like a lot, but it’s almost exactly how React does things internally!
+
+
+--------------------------------------
+Understanding our custom React element
+--------------------------------------
+
+Now, to use this `customRender` function, we need to pass it an object.
+
+So we create an object that represents an HTML element. For example:
+
+    * We say the type is "a" (a link)
+    * The props are href and target
+    * The children is the text shown inside the link
+
+So the final object looks like:
+
+    {
+        type: "a",
+        props: {
+            href: "https://google.com",
+            target: "_blank"
+        },
+        children: "Click me to visit google"
+    }
+
+This is just like React's own structure for elements.
+
+And now, when we pass this to our `customRender` function, it adds the real link to the page.
+
+This whole folder shows how React thinks: it works with **objects**, not HTML directly.
+
+By building this manually, we now better understand how React takes JSX, turns it into objects, and inserts it into the DOM.
+
+
+
+==============
+vite-react-app
+==============
+
+----------------------------------------
+How JSX really works (behind the scenes)
+----------------------------------------
+
+When you write JSX in React, it feels like writing HTML — but it’s not real HTML.
+
+The browser cannot understand JSX directly.
+
+So, something needs to convert it into a format the browser understands.
+
+That "something" is a tool called **Babel**.
+
+Babel takes your JSX code and turns it into a special function call called **React.createElement()**.
+
+React doesn’t work with HTML. It works with **JavaScript objects**. So this process is very important.
+
+For example:
+
+    JSX:
+        <a href="https://google.com">Visit</a>
+
+    Babel turns it into:
+        React.createElement("a", { href: "https://google.com" }, "Visit")
+
+Now React takes this object and uses it to create a real HTML element in the browser.
+
+
+-----------------------------------
+What does React.createElement() do?
+-----------------------------------
+
+React.createElement is a function provided by React.
+
+Its job is simple:
+
+    * Take the tag name ("a", "div", etc.)
+    * Take the props (like href, className, target)
+    * Take the content (text or even other elements)
+
+Then it returns a JavaScript object that stores all this information.
+
+This object is not yet on the screen — it is just a description of what we want.
+
+React reads this object and knows exactly what kind of HTML element to create.
+
+So, React uses this object to build real HTML using a function like **ReactDOM.createRoot().render()**.
+
+
+------------------------------------------------
+What is React.render() or createRoot().render()?
+------------------------------------------------
+
+After JSX is converted to objects using React.createElement, we need to show it in the browser.
+
+That’s where render functions come in.
+
+In older React versions, we used:
+
+    ReactDOM.render(element, container)
+
+In newer React (React 18+), we use:
+
+    createRoot(container).render(element)
+
+This function reads the object and adds it to the actual DOM (HTML page).
+
+It puts everything inside a container — usually a `<div id="root">` in the HTML file.
+
+
+------------------------------------------------------
+Why JSX allows only expressions (not if/else or loops)
+------------------------------------------------------
+
+When writing JSX, we can write things like this:
+
+    <p>{2 + 2}</p>          → works fine
+    <p>{aFunction()}</p>    → works fine
+
+But if we try this:
+
+    <p>{if (true) { ... }}</p>      → error
+    <p>{for (let i=0; i<5; i++)}</p> → error
+
+Why does this happen?
+
+It’s because Babel changes JSX into function calls like:
+
+    React.createElement("p", null, 2 + 2)
+
+You cannot pass an if-statement or a for-loop as a function parameter — JavaScript doesn’t allow that.
+
+So JSX only allows **evaluated expressions** — things that return a value.
+
+Examples of allowed expressions:
+
+    * 5 * 2
+    * aVariable
+    * someFunction()
+    * condition ? "Yes" : "No"
+
+This rule keeps JSX simple and safe. It also helps Babel convert everything correctly.
+
+
+
+================
+vite-react-app-2
+================
+
+--------------------------
+Discovering Hooks in React
+--------------------------
+
+In this project, we explore one of the most exciting features of modern React — **Hooks**.
+
+Hooks are functions that let us “hook into” React features like state, lifecycle, and more — all inside **function components**.
+
+Before hooks, we had to use **class components** for this.
+
+Hooks changed that. Now we can do everything inside simple functions.
+
+This makes code cleaner, smaller, and easier to understand.
+
+
+--------------------------
+Why were Hooks introduced?
+--------------------------
+
+Before hooks, developers had two options:
+
+    * Use simple function components (but with no state or lifecycle)
+    * Or write long and complex class components (to use state, etc.)
+
+This was a problem — because simple functions were easier to write, but they were limited.
+
+Hooks solved this problem.
+
+With hooks, even function components can use powerful React features.
+
+Now you don’t need to write classes. You can write everything using functions + hooks.
+
+
+-----------------------------
+What problems do Hooks solve?
+-----------------------------
+
+Hooks solve many common issues in React:
+
+    * No more switching between functions and classes
+    * You can reuse logic across components using custom hooks
+    * State and lifecycle code is easier to read
+    * You can split related code into smaller functions
+
+Hooks made React development faster, more fun, and less confusing.
+
+
+-----------------------
+How does useState work?
+-----------------------
+
+`useState` is one of the most basic and useful hooks.
+
+It allows a component to hold a value — like a counter.
+
+You use it like this:
+
+    const [count, setCount] = useState(0)
+
+What this means:
+
+    * `count` holds the current value (starts at 0)
+    * `setCount` is a function to update the value
+
+When you call `setCount`, React updates the value and re-renders the component.
+
+This is how we build interactive UI — like counters, forms, buttons, etc.
+
+With useState, your UI automatically changes when the value changes.
+
+
+-------------------------
+Why developers love React
+-------------------------
+
+React made a big change in how web apps are built.
+
+Before React:
+
+    * You had to select elements using document.querySelector
+    * You had to manually change content using innerHTML
+    * Your code would become messy very fast
+
+React changed that.
+
+    * Now you write UI as components
+    * You use state to manage values
+    * React updates the DOM for you automatically
+
+Hooks made it even better.
+
+Developers love React because it’s clean, powerful, and saves time.
+
+
+---------------------------------------------------------
+What makes React more powerful than classical JavaScript?
+---------------------------------------------------------
+
+Here’s why React is better than plain JavaScript for building modern web apps:
+
+    * Virtual DOM makes UI faster
+    * JSX makes UI easy to write and read
+    * Components help reuse code
+    * Hooks give full control in simple functions
+    * Huge community and library support
+
+React allows you to build big, complex apps in a way that is still easy to manage and understand.
+
