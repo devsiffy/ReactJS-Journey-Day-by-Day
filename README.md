@@ -77,3 +77,31 @@
     - What problems do Hooks solve?
     - How does `useState` work?
     - What makes React more powerful than classical JavaScript?
+
+---
+
+<h3>📅 Day 04</h3>
+
+> 🌟 _"React updates like magic — only where it matters, only when it matters."_
+
+1. **Virtual DOM**
+
+   - What is Virtual DOM?
+   - Diffing and Updating the Real DOM
+   - Limitations of Virtual DOM  
+     <br />
+
+2. **Fiber Architecture**
+
+   - Why React Introduced Fiber
+   - How Fiber Works (Fiber Tree, Linked List)
+   - Benefits Over Virtual DOM
+   - Supports Concurrent Features  
+     <br />
+
+3. **Reconciliation (Diffing)**
+
+   - What is Reconciliation?
+   - How React Finds Differences
+   - Handling Lists with Keys
+   - Fiber’s Role in Reconciliation

@@ -1,0 +1,185 @@
+
+:: Day 04 ::
+
+
+===================
+React Core Concepts
+===================
+
+
+Story Overview
+--------------
+
+React is like a magical kingdom called ReactLand.
+
+In ReactLand, your app is the king, and the user interface (UI) is the castle.
+
+Whenever the user does something, the castle needs to change quickly.
+
+But rebuilding the whole castle again and again is slow.
+
+React uses smart workers to update only the changed parts.
+
+These smart workers use three important ideas:
+
+    * Virtual DOM
+    * Reconciliation
+    * Fiber Architecture
+
+Let's learn these with a fun story.
+
+
+===========
+Virtual DOM
+===========
+
+
+What is Virtual DOM?
+--------------------
+
+A long time ago, React used something called Virtual DOM.
+
+It is like a copy or blueprint of the real DOM.
+
+    → DOM = Document Object Model (what we see on the screen)
+
+React does not change the real DOM directly.
+
+Instead, it makes changes in the Virtual DOM first.
+
+Then React compares the old Virtual DOM with the new one.
+
+It finds the difference (called "diffing") and updates only the changed parts in the real DOM.
+
+This is much faster than changing everything in the real DOM.
+
+
+------------------------
+Problem with Virtual DOM
+------------------------
+
+When the app becomes large, comparing the full Virtual DOM takes time.
+
+This slows down the updates.
+
+So React made a better system called Fiber.
+
+
+==================
+Fiber Architecture
+==================
+
+
+Why Fiber?
+----------
+
+Fiber is a new system inside React.
+
+It is smarter and faster than Virtual DOM.
+
+Fiber gives React the power to:
+
+    * Pause work
+    * Continue later
+    * Split work into small pieces
+    * Decide what to update first
+
+This helps the app stay smooth and not freeze, even if it is very big.
+
+
+How Fiber Works
+---------------
+
+Fiber uses a new structure called Fiber Tree.
+
+    → It is like a linked list, not just a normal tree.
+
+Each part of the UI has a "fiber" — a small unit of work.
+
+React processes one fiber at a time.
+
+If something more important happens (like a click), React can stop the work and handle that first.
+
+This makes updates fast and user-friendly.
+
+
+Difference from Virtual DOM
+---------------------------
+
+Virtual DOM compared full trees.
+
+Fiber works step by step with small units.
+
+Fiber also supports new features like Concurrent Mode.
+
+This is why React does not only use Virtual DOM anymore.
+
+It uses the Fiber system for all updates.
+
+
+========================
+Reconciliation (Diffing)
+========================
+
+
+What is Reconciliation?
+-----------------------
+
+Reconciliation is the process of finding what changed in the UI.
+
+React compares the old UI and the new UI.
+
+Then it updates only the parts that changed.
+
+This makes updates fast and efficient.
+
+
+How Reconciliation Works
+------------------------
+
+React checks:
+
+    * Is the element type same? → Then update it.
+    * Is the element type different? → Then delete the old one and create a new one.
+    * Are there lists (like multiple items)? → Then use "keys" to track what moved, added, or removed.
+
+This smart checking is called the "diffing algorithm".
+
+React does this using the Fiber system.
+
+
+==================
+React.createRoot()
+==================
+
+
+What is createRoot?
+-------------------
+
+In new versions of React, we use createRoot to start the app.
+
+Example:
+
+    import { createRoot } from 'react-dom/client';
+    const root = createRoot(document.getElementById('root'));
+    root.render(<App />);
+
+This opens the gate for the Fiber system.
+
+It replaces the old method ReactDOM.render.
+
+Now React can use full power of Fiber and Concurrent features.
+
+
+===========
+Key Summary
+===========
+
+    * Virtual DOM is a copy of the real DOM. React updates the real DOM by checking differences.
+
+    * Fiber is a new system that lets React work step by step. It can pause, resume, and prioritize work.
+
+    * Reconciliation is how React finds what changed and updates only those parts.
+
+    * createRoot is the new way to start React apps using the Fiber system.
+
