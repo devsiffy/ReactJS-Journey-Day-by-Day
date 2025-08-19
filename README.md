@@ -105,3 +105,26 @@
    - How React Finds Differences
    - Handling Lists with Keys
    - Fiber’s Role in Reconciliation
+
+---
+
+<h3>📅 Day 05</h3>
+
+> 🌟 _"Learning to write programs stretches your mind, and helps you think better."_
+
+1. **Tailwind CSS Setup with Vite**
+
+   - Integrating Tailwind with React via Vite
+   - Docs Link: https://v3.tailwindcss.com/docs/guides/vite
+     <br />
+
+2. **Understanding Props in React**
+
+   - Passing data from parent to child
+   - Using props in functional components
+   - Sending multiple values via a single prop
+     <br />
+
+3. **Understanding State Batching in Counter Component**
+   - Updating state multiple times correctly
+   - Differences between direct updates vs. functional updates

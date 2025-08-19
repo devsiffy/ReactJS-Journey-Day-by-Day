@@ -1,0 +1,109 @@
+
+:: Day 05 ::
+
+
+======================
+ReactJS + Tailwind CSS
+======================
+
+
+Tailwind CSS Setup with Vite
+----------------------------
+
+To set up Tailwind CSS with Vite, follow the official guide:
+
+    → https://v3.tailwindcss.com/docs/guides/vite
+
+This guide gives you all steps to install and configure Tailwind with Vite properly.
+
+Once done, you can start using Tailwind classes in your React components.
+
+
+Understanding Props in React
+----------------------------
+
+Props are used to send data from parent to child component.
+
+Example in App.jsx:
+
+    <Card product="Simple Shirt" price="50" />
+    <Card product="Printed Shirt" price="120" status="Out of Stock" />
+
+In Card.jsx (approach 1 to handle props):
+
+    function Card(props) {
+        return (
+            <div>
+                Product: {props.product}
+                Price: {props.price}
+                Status: {props.status}
+            </div>
+        );
+    }
+
+Key Points:
+
+    * Props are read-only.
+    * Useful for making reusable components.
+
+
+Passing Object as Props
+-----------------------
+
+You can also pass an object as a single prop.
+
+In App.jsx:
+
+    const user = {
+        name: "Devsiffy",
+        email: "dev@google.com",
+        isLoggedIn: false,
+    };
+
+    <User info={user} />
+
+In User.jsx (approach 2 to handle props):
+
+    function User({
+        name = "Ali",
+        email = "abc@gmail.com",
+        isLoggedIn = false,
+    }) {
+        return (
+            <div>
+                <p>Name: {name}</p>
+                <p>Email: {email}</p>
+                <p>IsLoggedIn: {isLoggedIn ? "Yes" : "No"}</p>
+            </div>
+        );
+    }
+
+This is cleaner when passing multiple values.
+
+
+Understanding State Batching in Counter Component
+-------------------------------------------------
+
+In Counter.jsx:
+
+    const [counter, setCounter] = useState(0);
+
+To increase value by 3:
+
+    setCounter((prev) => prev + 1);
+    setCounter((prev) => prev + 1);
+    setCounter((prev) => prev + 1);
+
+Why this works:
+
+    * React groups state updates (called "batching").
+    * Using the previous value ensures correct results.
+
+Wrong way (won’t work):
+
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+    setCounter(counter + 1);
+
+It only adds 1 because `counter` is not updated immediately.
+
