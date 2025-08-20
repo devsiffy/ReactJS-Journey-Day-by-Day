@@ -82,7 +82,7 @@
 
 <h3>📅 Day 04</h3>
 
-> 🌟 _"React updates like magic — only where it matters, only when it matters."_
+> _"React updates like magic — only where it matters, only when it matters."_
 
 1. **Virtual DOM**
 
@@ -110,7 +110,7 @@
 
 <h3>📅 Day 05</h3>
 
-> 🌟 _"Learning to write programs stretches your mind, and helps you think better."_
+> _"Learning to write programs stretches your mind, and helps you think better."_
 
 1. **Tailwind CSS Setup with Vite**
 
@@ -128,3 +128,13 @@
 3. **Understanding State Batching in Counter Component**
    - Updating state multiple times correctly
    - Differences between direct updates vs. functional updates
+
+---
+
+<h3>📅 Day 06</h3>
+
+> _"Every project starts with ‘Hello World’ and ends with ‘Why isn’t this working?!’"_
+
+1. **Background Changer App**
+   - A simple React project built with `Vite` and styled using `Tailwind CSS`.
+   - It lets users change the background color by clicking on color buttons.
