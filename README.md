@@ -138,3 +138,28 @@
 1. **Background Changer App**
    - A simple React project built with `Vite` and styled using `Tailwind CSS`.
    - It lets users change the background color by clicking on color buttons.
+
+---
+
+<h3>📅 Day 07</h3>
+
+> _"Build tools that save time and create delight—one line of code at a time."_
+
+1. **Password Generator Project**
+
+   - useState
+   - useEffect
+   - useRef
+   - useCallback
+   - Component Structure
+     <br />
+
+2. **Currency Converter Project**
+   - useState
+   - useEffect
+   - useId
+   - Custom Hook (Calling & Handling API)
+   - Controlled Components
+   - Reusable Components
+   - Component Structure
+   - Folder Structure

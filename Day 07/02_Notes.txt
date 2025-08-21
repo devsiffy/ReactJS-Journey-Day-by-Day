@@ -1,0 +1,175 @@
+
+:: Day 07 ::
+
+
+==========================
+Currency Converter Project
+==========================
+
+
+Project Overview
+----------------
+
+In this project, we build a **currency converter** using ReactJS.
+
+It helps users to:
+    * Enter an amount
+    * Select "From" and "To" currencies
+    * Convert the amount
+    * Swap the currencies
+    * See the converted result
+
+We use basic React concepts like:
+    * useState
+    * useEffect
+    * Custom Hook
+    * Components
+    * Controlled Inputs
+
+
+Key Concepts Used
+-----------------
+
+
+1. useState
+-----------
+
+We use `useState` to store and change values in React.
+
+In this project, we use:
+    * amount → to store the input amount
+    * from → to store the "from" currency
+    * to → to store the "to" currency
+    * convertedAmount → to store the result after conversion
+
+
+2. Custom Hook (useCurrencyData)
+--------------------------------
+
+We make a **custom hook** to fetch data from the currency API.
+
+It uses:
+    * fetch() → to call the API
+    * useEffect → to get data when "from" currency changes
+
+It returns an object with all currency exchange values.
+
+
+3. useEffect
+------------
+
+`useEffect` runs when the "from" currency changes.
+
+It fetches the latest exchange rates from the internet.
+
+We use the free API:
+    * https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api
+
+
+4. Controlled Components
+------------------------
+
+We control the value of input and dropdown using state.
+
+This makes sure that input always shows the latest value from state.
+
+Examples:
+    * value={amount}
+    * onChange={(e) => setAmount(e.target.value)}
+
+
+5. Swap Function
+----------------
+
+We create a `swap()` function to change the "from" and "to" currencies.
+
+We also switch the amounts to make the UI feel smart.
+
+Swap logic:
+    * setFrom(to)
+    * setTo(from)
+    * setConvertedAmount(amount)
+    * setAmount(convertedAmount)
+
+
+6. Convert Function
+-------------------
+
+This function is called when the user clicks "Convert".
+
+It multiplies the input amount with the selected currency rate.
+
+Formula:
+    * convertedAmount = amount * currencyInfo[to]
+
+
+7. API Fetch and Data Format
+----------------------------
+
+The API returns a JSON file with all currency values.
+
+Example URL:
+    * https://.../currencies/usd.json
+
+Response looks like:
+
+    {
+        "usd": {
+            "eur": 0.92,
+            "pkr": 278,
+            ...
+        }
+    }
+
+
+8. InputBox Component
+---------------------
+
+We use one reusable component for both "From" and "To" inputs.
+
+Props used:
+    * label
+    * amount
+    * onAmountChange
+    * currencyOptions
+    * onCurrencyChange
+    * selectCurrency
+    * amountDisable (optional)
+
+
+9. UI Structure
+---------------
+
+We return JSX layout inside the App component.
+
+UI has:
+    * Background image
+    * Card with form
+    * Title
+    * Two InputBoxes
+    * Swap button
+    * Convert button
+
+
+10. Folder Structure
+--------------------
+
+    src/
+        App.js
+        components/
+            InputBox.jsx
+            index.js
+        hooks/
+            useCurrencyData.js
+
+All logic is split into components and custom hooks.
+
+
+11. CurrencyOptions
+-------------------
+
+We use:
+    * Object.keys(currencyInfo)
+
+This gives an array of all currency codes to show in dropdown.
+

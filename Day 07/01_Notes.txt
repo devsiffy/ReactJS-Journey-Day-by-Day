@@ -1,0 +1,119 @@
+
+:: Day 07 ::
+
+
+==========================
+Password Generator Project
+==========================
+
+
+Project Overview
+----------------
+
+In this project, we build a simple password generator using ReactJS.
+
+It helps users to:
+    * Choose password length
+    * Add numbers (0-9)
+    * Add special characters (!, #, $, etc.)
+    * Copy the generated password
+
+We use basic React concepts like:
+    * useState
+    * useEffect
+    * useRef
+    * useCallback
+
+
+Key Concepts Used
+-----------------
+
+
+1. useState
+-----------
+
+We use `useState` to create and manage values (called states) in React.
+
+In this project, we use:
+    * length → to store the password length
+    * password → to store the final password
+    * numberAllowed → true or false (user wants numbers or not)
+    * charAllowed → true or false (user wants special characters or not)
+
+
+2. useEffect
+------------
+
+`useEffect` runs a function automatically when some values change.
+
+Here, we use it to generate a new password every time:
+    * length changes
+    * numberAllowed changes
+    * charAllowed changes
+
+
+3. useRef
+---------
+
+`useRef` helps us access HTML elements directly (like input box).
+
+We use it to:
+    * Select the password input text
+    * Copy the password to clipboard
+
+
+4. useCallback
+--------------
+
+`useCallback` is used to save functions and avoid re-creating them again and again.
+
+We use it for:
+    * passwordGenerator → to create new password
+    * copyGeneratedPassword → to copy password
+
+It helps to improve performance.
+
+
+5. Password Generation Logic
+----------------------------
+
+We create a `domain` string with:
+    * Letters → A-Z, a-z
+    * Numbers → 0-9 (if allowed)
+    * Special characters → !#$%^&*<>,? (if allowed)
+
+Then we use a loop to pick random characters.
+
+
+6. Copy to Clipboard
+--------------------
+
+We use `navigator.clipboard.writeText()` to copy password.
+
+First, we select the input box using ref:
+    * `selectPassword.current?.select()`
+
+Then copy the value:
+    * `window.navigator.clipboard.writeText(password)`
+
+
+7. HTML Inputs
+--------------
+
+We use:
+    * Text input → to show password
+    * Range input → to change length
+    * Checkbox input → to include numbers and special characters
+
+
+8. Component Structure
+----------------------
+
+The entire code is inside the main `App` component.
+
+We return the layout inside JSX:
+    * Title
+    * Password box + Copy button
+    * Length range slider
+    * Checkboxes for numbers and characters
+
