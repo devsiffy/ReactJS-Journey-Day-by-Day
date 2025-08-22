@@ -1,0 +1,146 @@
+
+:: Day 08 ::
+
+
+================
+React Router DOM
+================
+
+
+Introduction
+------------
+
+React Router DOM helps us make a multi-page feel in a single-page React app.  
+We can show different pages like Home, About, Contact, etc., without reloading the page.
+
+
+===========================
+Installing React Router DOM
+===========================
+
+To use routing, we must install the package.
+
+    npm install react-router-dom
+
+This package gives us all the tools we need to make routes and show different pages.
+
+
+===============
+Creating Router
+===============
+
+We can create router in two ways. Both are correct.
+
+
+Approach 1 (Array)
+------------------
+
+    * We use an array of objects inside createBrowserRouter.
+    * Each object is a route.
+
+
+Approach 2 (JSX)
+----------------
+
+    * We use createRoutesFromElements() and Route elements.
+    * Easier to read and understand for beginners.
+
+    * Use `<Route path="..." element={...}>` to define each page.
+    * Use `<RouterProvider router={router} />` to give router to the whole app.
+
+
+==========================
+Nested Routing with Layout
+==========================
+
+We use one Layout component to wrap all pages.
+
+Inside Layout.jsx:
+    * We import Outlet from react-router-dom.
+    * Outlet is used to show child pages inside Layout.
+    * Header and Footer are always visible. Page content changes with Outlet.
+
+Example structure:
+------------------
+
+    - Layout
+        → Header
+        → Outlet
+        → Footer
+
+
+Showing Loading State
+---------------------
+
+In Layout.jsx, we also use:
+    useNavigation()
+
+This hook tells us if a page is loading.
+
+We can show a loading message like:
+    "Loading..."
+
+This is useful to show loading screen when moving to a new route.
+
+
+====================
+Links and Navigation
+====================
+
+To move between pages without reloading, we use:
+
+
+1. Link
+-------
+
+    * Simple button or text to go to another page.
+
+        Example:
+            <Link to="/about">About</Link>
+
+
+2. NavLink
+----------
+
+    * Similar to Link, but it gives us a way to apply special class when active.
+
+    * We use it with Tailwind CSS to change styles.
+        Example:
+            <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                    isActive ? "text-red-500" : "text-white"
+                }
+            >
+                Contact
+            </NavLink>
+
+
+=============================
+Dynamic Routes with useParams
+=============================
+
+We can create dynamic pages like user profile.
+
+    Route path: "/user/:userId"
+
+Inside the component, we use:
+    const { userId } = useParams();
+
+It gives us the value from the URL.
+    Example: /user/5 → userId will be "5"
+
+
+=========================
+Fetching Data with Loader
+=========================
+
+We can fetch data before loading the page using "loader".
+
+In our example:
+    * Route has a loader function → githubInfoLoader
+    * It fetches data from GitHub API
+    * We get that data using → useLoaderData()
+
+This makes page load only after data is ready.
+

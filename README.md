@@ -163,3 +163,45 @@
    - Reusable Components
    - Component Structure
    - Folder Structure
+
+---
+
+<h3>📅 Day 08</h3>
+
+> _"Routing gives your React app a sense of structure and navigation—without the reloads."_
+
+1. **React Router DOM**
+
+   - Purpose and Benefits of Client-Side Routing
+   - Creating a Multi-Page Feel in a Single-Page App
+   - Installing `react-router-dom`
+     <br />
+
+2. **Creating Routes**
+
+   - Approach 1: Route Array with `createBrowserRouter`
+   - Approach 2: JSX-Based Routes with `createRoutesFromElements`
+   - Using `<Route>` and `<RouterProvider>`  
+     <br />
+
+3. **Nested Routing & Layouts**
+
+   - Creating a `Layout.jsx` Component
+   - Using `<Outlet>` to Render Nested Pages
+   - Shared Components like Header & Footer
+   - Showing Loading State with `useNavigation()`  
+     <br />
+
+4. **Routing Tools**
+
+   - Using `<Link>` for Basic Navigation
+   - Styling Active Links with `<NavLink>` and Tailwind CSS
+   - Creating Dynamic Paths using `:params`
+   - Accessing URL Parameters with `useParams()`  
+     <br />
+
+5. **Data Loading with Loaders**
+
+   - Fetching Data Before Page Render
+   - Using `loader` Functions in Routes
+   - Accessing Preloaded Data with `useLoaderData()`
