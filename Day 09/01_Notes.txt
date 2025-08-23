@@ -1,0 +1,97 @@
+
+:: Day 09 ::
+
+
+==============================
+Using Context API : Approach 1
+==============================
+
+
+What I Learned
+--------------
+
+I learned how to use Context API in ReactJS by creating a small project.
+
+In this project:
+    * The user enters data into a form using one component (User.jsx).
+    * That data is shown in another component (Profile.jsx).
+    * No props were passed. Instead, I used Context API to share data.
+
+
+Folder Structure and Files
+--------------------------
+
+To organize the project, I created this folder:
+    src/context
+
+Inside this folder, I created two important files:
+    * UserContext.js
+    * UserContextProvider.jsx
+
+These files are used to set up and manage the Context API.
+
+
+UserContext.js
+--------------
+
+This file is used to create and export the context.
+
+    * It uses createContext() from React.
+    * It exports the created context so other files can use it.
+    * This is the first step when setting up a new context.
+
+Purpose:
+    → Just creates the context.
+    → Does not include any logic or state here.
+
+Usage:
+    * Other files will import this context.
+    * Components will use this context with useContext().
+
+
+UserContextProvider.jsx
+-----------------------
+
+This file is used to create a Provider component.
+
+    * It imports the context from UserContext.js.
+    * It uses useState() to manage user data (username and password).
+    * It wraps children with the Provider and passes values through "value".
+
+Purpose:
+    → Shares data and functions with all child components.
+    → Acts as a wrapper for parts of the app that need the shared data.
+
+This component is used in App.jsx to wrap all the components that need context.
+
+Key points:
+    * It makes the user and setUser available to all child components.
+    * Without this wrapper, context will not work in the child components.
+    * It helps keep the context logic clean and separate.
+
+
+App.jsx
+-------
+
+In App.jsx:
+    * I imported the UserContextProvider.
+    * I wrapped the components (User and Profile) inside this provider.
+    * This makes context available to User.jsx and Profile.jsx.
+
+This setup allows those components to access and update the shared user data.
+
+
+How Components Use Context
+--------------------------
+
+User.jsx:
+    * Takes user input from a form.
+    * Uses useContext() to access setUser function.
+    * When form is submitted, it updates the user data in the context.
+
+Profile.jsx:
+    * Uses useContext() to access user data.
+    * Displays the data entered in the form.
+
+No props are passed between User and Profile.
+

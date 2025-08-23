@@ -1,0 +1,111 @@
+
+:: Day 09 ::
+
+
+==============================
+Using Context API : Approach 2
+==============================
+
+
+What I Learned
+--------------
+
+I learned how to use Context API in ReactJS by building a small project called "ThemeSwitcher".
+
+In this project:
+    * I used one context to manage theme mode (light or dark).
+    * I created a button to switch between light and dark themes.
+    * The selected theme is shared with all components.
+
+
+Folder Structure and Files
+--------------------------
+
+To manage the theme logic and context, I followed this structure:
+
+    src/
+        context/
+            Theme.js         → Creates and exports the theme context and custom hook
+        components/
+            ThemeBtn.jsx     → Button to change the theme
+            Card.jsx         → Shows content styled with the selected theme
+        App.jsx              → Root component, wraps all others with the ThemeProvider
+
+All files work together using the Context API to manage and apply theme changes.
+
+
+Theme.js
+--------
+
+File Path: src/context/Theme.js
+
+In this file:
+    * I created a context using createContext().
+    * I set some default values:
+        - themeMode (default: "light")
+        - lightTheme() → empty function
+        - darkTheme() → empty function
+    * I exported the context Provider to wrap other components.
+    * I created a custom hook called useTheme() using useContext().
+      → This hook is used in components to access or change the theme.
+
+This file contains all logic for creating and accessing the theme context.
+
+
+App.jsx
+-------
+
+File Path: src/App.jsx
+
+In this file:
+    * I used useState to store the current theme mode (light or dark).
+    * I created two functions:
+        - lightTheme() → sets theme to light
+        - darkTheme() → sets theme to dark
+    * I used useEffect to apply the selected theme to the HTML tag.
+      → It adds either "light" or "dark" class to the root element.
+    * I used ThemeProvider to wrap all child components and pass context values.
+
+App.jsx controls the theme state and provides the context values to other components.
+
+
+ThemeBtn.jsx
+------------
+
+File Path: src/components/ThemeBtn.jsx
+
+In this file:
+    * I used the useTheme() hook to access:
+        - themeMode
+        - lightTheme()
+        - darkTheme()
+    * I created a toggle button (switch).
+    * When the button is toggled:
+        - If checked, it calls darkTheme()
+        - If unchecked, it calls lightTheme()
+
+This component lets the user change the theme using a toggle input.
+
+
+Card.jsx
+--------
+
+File Path: src/components/Card.jsx
+
+In this file:
+    * I created a simple card UI using Tailwind CSS classes.
+    * It does not use the context directly.
+    * Instead, it uses Tailwind’s dark mode classes.
+    * The styles automatically change when the HTML has the "dark" class.
+
+This shows how some components can react to theme changes without using context directly.
+
+
+tailwind.config.js
+------------------
+
+Make sure to use dark/light feature of tailwind css, don't forget to add this;
+    darkMode: "class",
+
+NOTE:- Approach 2 of using Context API is more organized and structured. However there is also no problem using approach 1, but I like the approach 2 more...
+

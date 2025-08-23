@@ -205,3 +205,32 @@
    - Fetching Data Before Page Render
    - Using `loader` Functions in Routes
    - Accessing Preloaded Data with `useLoaderData()`
+
+---
+
+<h3>📅 Day 09</h3>
+
+> _"Every bug is a step closer to mastery."_
+
+1. **Context API: Approach 1 (Basics)**
+
+   - Share data between components without passing props
+   - Setup context files inside src/context
+   - Manage state and provide data using a context provider
+   - Wrap components in the provider to access shared data
+     <br />
+
+2. **Context API: Approach 2 (Theme Switcher)**
+
+   - Use context to manage light/dark theme globally
+   - Create context and custom hook for theme control
+   - Use a toggle button to switch themes
+   - Apply theme styles using CSS classes (Tailwind CSS)
+     <br />
+
+3. **Context API: Todo App + LocalStorage**
+
+   - Manage todo list data globally with context
+   - Organize code with context and components
+   - Use localStorage to save todos across sessions
+   - Components update and display todos using shared context

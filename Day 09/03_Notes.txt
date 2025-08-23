@@ -1,0 +1,163 @@
+
+:: Day 09 ::
+
+
+=============================
+Context API : TodoApp Project
+=============================
+
+
+What I Learned
+--------------
+
+I learned how to use Context API in ReactJS by creating a small TodoApp project.
+
+In this project:
+    * I used Context API to manage and share todo data between components.
+    * I also used localStorage to save the todos in the browser.
+    * This means todos remain saved even after refresh or browser close.
+
+This project helped me understand how to build a global state using Context and also store it permanently in the browser.
+
+
+Folder Structure and Files
+--------------------------
+
+To organize the project, I created the following structure:
+
+    src/
+        ├── App.jsx
+        ├── context/
+        │     └── TodoContext.js
+        └── components/
+              ├── TodoForm.jsx
+              └── TodoItem.jsx
+
+Each file has a specific purpose, and keeping logic in different files made the code easy to manage.
+
+
+TodoContext.js
+--------------
+
+This file is used to create and export the context for the todo application.
+
+    * It uses createContext() from React.
+    * It defines a default value (todos and empty functions).
+    * It exports the Provider (TodoProvider).
+    * It also exports a custom hook (useTodo) which uses useContext().
+
+Purpose:
+    → Shares todos and methods with all components that need them.
+    → Avoids using props to pass data between components.
+
+Usage:
+    * Other files (like TodoForm and TodoItem) use the useTodo() hook to access shared data and methods.
+    * This keeps the components clean and avoids repeating useContext() directly.
+
+
+App.jsx
+-------
+
+This is the main file that controls the entire TodoApp.
+
+In this file:
+    * I created todos state using useState().
+    * I wrote logic functions:
+        → addTodo()
+        → updateTodo()
+        → deleteTodo()
+        → toggleComplete()
+
+    * I used two useEffect() hooks:
+        → One to load todos from localStorage on first render.
+        → One to save todos to localStorage whenever they change.
+
+    * I wrapped all child components inside the <TodoProvider>.
+
+    * Inside the Provider, I passed:
+        → todos
+        → addTodo, updateTodo, deleteTodo, toggleComplete
+
+    * I rendered two components:
+        → TodoForm (to add todos)
+        → TodoItem (to display and manage each todo)
+
+Purpose:
+    → Manages the main state and logic of the app.
+    → Connects the context with all components.
+    → Makes the todos available across the app.
+
+
+TodoForm.jsx
+------------
+
+This component lets the user add a new todo.
+
+    * It uses useState() to handle the input field.
+    * It uses useTodo() to get the addTodo() function from context.
+    * When the user submits the form:
+        → It checks if input is not empty.
+        → It calls addTodo() with a new todo.
+        → It clears the input box.
+
+Purpose:
+    → Simple input form for creating new todos.
+    → Adds todos directly into shared context.
+
+
+TodoItem.jsx
+------------
+
+This component shows each todo item.
+
+    * It receives a todo object using props.
+    * It uses useTodo() to access:
+        → updateTodo()
+        → deleteTodo()
+        → toggleComplete()
+
+    * It uses useState() to:
+        → Store the edited todo message.
+        → Handle edit mode (true/false).
+
+    * Features:
+        → Checkbox to mark as completed.
+        → Edit and save updated text.
+        → Delete button to remove todo.
+        → Edit is disabled if todo is already completed.
+
+Purpose:
+    → Each todo is interactive.
+    → Uses context functions to update global state.
+
+
+localStorage in TodoApp
+------------------------
+
+I used localStorage to keep todos saved even after page reload or closing the browser.
+
+How it works:
+    * When the app starts:
+        → useEffect loads todos from localStorage.
+        → If found, they are set to state.
+
+    * When todos are updated:
+        → Another useEffect saves the current todos to localStorage.
+
+Purpose:
+    → Makes data persistent.
+    → No backend or database needed.
+    → Works well for small or demo projects.
+
+
+How Context and Components Work Together
+----------------------------------------
+
+Step-by-step:
+
+    1. Context is created in TodoContext.js and exported.
+    2. App.jsx wraps all components inside <TodoProvider>.
+    3. App.jsx also passes todos and all logic functions to the context.
+    4. Components like TodoForm and TodoItem use the custom hook useTodo().
+    5. Any changes (add, edit, delete, toggle) update the state and also localStorage.
+
