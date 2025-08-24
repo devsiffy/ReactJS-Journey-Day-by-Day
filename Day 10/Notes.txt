@@ -1,0 +1,159 @@
+
+:: Day 10 ::
+
+
+================
+State Management
+================
+
+State management means controlling and organizing the data that your application uses.
+
+In React, state is like a memory where we store values that can change over time.
+
+When our app becomes big, it is hard to share and control state between many components.
+
+State management tools help us to store, change, and share state easily across the app.
+
+
+Why we need state management
+----------------------------
+
+    * To avoid passing props too deeply from one component to another
+    * To make state changes predictable and easy to debug
+    * To keep the code clean and organized
+    * To make it easier to work in a team
+
+
+===============================
+Short History of Flux and Redux
+===============================
+
+Flux is a pattern introduced by Facebook for managing data in a predictable way.
+
+Flux uses a single direction for data flow:
+    → Actions send data to a dispatcher
+    → Dispatcher sends data to stores
+    → Stores send updated data to views (components)
+
+Redux was created later as an improvement over Flux.
+
+Redux made the pattern simpler by:
+    * Using only one store instead of many
+    * Using pure functions (reducers) to update the state
+    * Having a clear way to manage actions and changes
+
+
+=====================================
+Redux, React Redux, and Redux Toolkit
+=====================================
+
+Redux
+    Redux is a library for managing state in JavaScript apps.
+    It keeps all the state in one place called the store.
+    State can only be changed by sending actions to the store.
+
+React Redux
+    React Redux is a library that connects Redux with React.
+    It gives us special hooks like useDispatch and useSelector.
+
+Redux Toolkit
+    Redux Toolkit is an official package from Redux team.
+    It makes Redux easier to use.
+    It gives helper functions like configureStore and createSlice.
+
+
+=================================================
+Store, Reducers, Slices, useDispatch, useSelector
+=================================================
+
+Store
+    The store is the main container where all the state is kept.
+    It also has the reducers to handle actions.
+
+Reducers
+    Reducers are pure functions that decide how the state should change.
+    A reducer gets two things: current state and an action.
+
+Slices
+    A slice is a part of the Redux state with its own name, initial state, and reducers.
+    Redux Toolkit createSlice helps create this easily.
+
+useDispatch
+    A hook from React Redux.
+    It sends an action to the store to update the state.
+
+useSelector
+    A hook from React Redux.
+    It reads state from the store into your component.
+
+
+=======================
+Provider in React Redux
+=======================
+
+Provider is a component from React Redux.
+
+We use it to wrap the whole app so that every component can use Redux store.
+
+Without Provider, useDispatch and useSelector will not work.
+
+Example idea:
+    Wrap the <App /> component with <Provider store={store}> in main.jsx
+
+
+==============================
+configureStore and createSlice
+==============================
+
+configureStore
+    A function from Redux Toolkit.
+    It creates a Redux store with given reducers.
+    It also adds some default settings like debugging tools.
+
+createSlice
+    A function from Redux Toolkit.
+    It helps create reducers, actions, and initial state in one place.
+
+
+====================================
+Reducer Parameters: state and action
+====================================
+
+When defining a reducer function, it gets two parameters:
+
+    state
+        This is the current state before change.
+
+    action
+        This is an object that has:
+            * type  → name of the action
+            * payload → extra data sent with the action
+
+
+==================
+nanoid and its use
+==================
+
+nanoid is a function from Redux Toolkit that creates a random and unique ID.
+
+It is useful for generating IDs for new items like todos.
+
+    Example idea:
+        id: nanoid()
+
+This makes sure that each new item has a different ID, so we can remove or update it easily.
+
+
+=====================
+Complete Example Flow
+=====================
+
+1. We create a store using configureStore.
+2. Inside the store, we create slices using createSlice.
+3. Each slice has initial state and reducer rules.
+4. In a component, we use useDispatch to send an action like "Add Todo".
+5. The reducer for that slice takes the current state and the action.
+6. It updates the state according to the rules.
+7. Any component that uses useSelector will see the updated state.
+8. The Provider at the top makes sure all components can do this.
+

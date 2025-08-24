@@ -234,3 +234,36 @@
    - Organize code with context and components
    - Use localStorage to save todos across sessions
    - Components update and display todos using shared context
+
+---
+
+<h3>📅 Day 10</h3>
+
+> _"State is the heartbeat of your app — manage it well, and everything flows."_
+
+1. **State Management Basics & History**
+
+   - Purpose and importance of managing state
+   - Why we need state management
+   - Flux architecture and one-way data flow
+   - Introduction and improvements of Redux
+     <br />
+
+2. **Redux Ecosystem**
+
+   - Redux core concepts
+   - React Redux integration (hooks like `useDispatch`, `useSelector`)
+   - Redux Toolkit for simplified usage
+     <br />
+
+3. **Core Building Blocks**
+
+   - Store, Reducers, and Slices
+   - `configureStore` and `createSlice`
+   - Reducer parameters: `state` and `action`
+     <br />
+
+4. **Supporting Utilities**
+
+   - `Provider` component for store access
+   - `nanoid` for generating unique IDs
