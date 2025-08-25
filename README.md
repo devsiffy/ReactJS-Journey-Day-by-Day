@@ -267,3 +267,28 @@
 
    - `Provider` component for store access
    - `nanoid` for generating unique IDs
+
+---
+
+<h3>📅 Day 11</h3>
+
+> _"Now building a full-fledged Blog Website with backend & database support using ReactJS and Appwrite."_
+
+1. **Starting Mega Project: Blog Website**
+
+   - Introduction to Full-Stack Blog Application Development
+   - Focus on ReactJS as the Frontend Framework
+     <br />
+
+2. **Backend-as-a-Service: Appwrite**
+
+   - Handling Backend Functionality
+   - Database Integration and Management
+     <br />
+
+3. **Other's Pre-requisites**
+
+   - Using `TinyMCE` for Rich Text Editing in React
+   - Implementing `html-react-parser` to Render Stored HTML Content
+   - Using `React Hook Form` for Efficient Form Management
+   - Managing Environment Variables

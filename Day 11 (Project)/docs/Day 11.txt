@@ -1,0 +1,20 @@
+
+:: Day 11 ::
+
+=============
+Project Day 1
+=============
+
+From, now we are working on a Mega Project and that is a "Blog Website" with full backend & database functionality (authentication, authorization, image uploading and many more).
+
+Because this is a ReactJS project (main focus) so we use a service 'Backend-as-a-Service' named as 'Appwrite' that handle backend and store data in the database.
+
+Some other packages and tools that are used;
+
+-> TinyMCE (npm package) - A react component that provides a text editor with all styling functionality.
+
+-> html-react-parser (npm package) - To parse the HTML that is stored directly in database to remember the post content styling (e.g., bold, italic)
+
+-> React Hook Form
+
+-> Environment Variables at Frontend-Side
