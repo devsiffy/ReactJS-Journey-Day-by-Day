@@ -1,9 +1,6 @@
 
 :: Day 11 ::
 
-=============
-Project Day 1
-=============
 
 From, now we are working on a Mega Project and that is a "Blog Website" with full backend & database functionality (authentication, authorization, image uploading and many more).
 

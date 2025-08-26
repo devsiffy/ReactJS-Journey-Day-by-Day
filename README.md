@@ -292,3 +292,34 @@
    - Implementing `html-react-parser` to Render Stored HTML Content
    - Using `React Hook Form` for Efficient Form Management
    - Managing Environment Variables
+
+---
+
+<h3>📅 Day 12</h3>
+
+> _"Building smart means building for flexibility and future growth."_
+
+1. **Creating Vite App & Appwrite Integration**
+
+   - Creating vite app & setup tailwind css
+   - Creaing appwrite account
+   - Creating database and storage bucket
+   - AuthService class for signup, login, logout, and user management
+     <br />
+
+2. **Environment & Configuration Setup**
+
+   - Creating `.env` file for storing secrets (with `VITE_` prefix)
+   - Setting up `config.js` to manage environment variables centrally
+     <br />
+
+3. **Package Installation**
+
+   - `appwrite`, `react-router-dom`
+   - `react-redux`, `@reduxjs/toolkit`, `react-hook-form`
+   - `@tinymce/tinymce-react`, `html-react-parser`
+     <br />
+
+4. **Code Architecture Best Practices**
+   - Concept of Vendor Lock-in
+   - Using service classes to isolate backend logic and ensure flexibility

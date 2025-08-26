@@ -1,0 +1,127 @@
+
+:: Day 12 ::
+
+=============
+Project Day 2
+=============
+
+Vite App + Tailwind CSS
+-----------------------
+
+Creating vite app with the tailwind CSS.
+
+Setup the project structure, and removing the unecessary files and code. Basically cleaning-up the project.
+
+
+Appwrite Setup
+--------------
+
+Today, I created an account on Appwrite.
+
+After login, I created a "new project" in Appwrite.  
+
+Then, I created:
+    * a Database
+    * a Storage bucket
+
+These are needed to store data and files for the blogging website.
+
+
+Installing npm Packages
+-----------------------
+
+I installed some important npm packages using the terminal. 
+
+These are added to the Vite React app:
+    * appwrite
+    * react-router-dom
+    * react-redux and @reduxjs/toolkit
+    * react-hook-form
+    * @tinymce/tinymce-react
+    * html-react-parser
+
+Each of these packages has a specific use:
+    * appwrite → used to connect frontend with Appwrite backend
+    * react-router-dom → helps to create different pages (routing)
+    * react-redux and toolkit → used to manage state globally
+    * react-hook-form → helps in handling forms easily
+    * tinymce → rich text editor for blog content
+    * html-react-parser → used to show HTML content in React components
+
+
+Creating .env File
+------------------
+
+I created a `.env` file in the root folder of the project.
+
+This file stores secret keys and URLs for Appwrite.  
+Because I am using Vite, every variable in `.env` must start with `VITE_`.
+
+Example:
+    VITE_APPWRITE_ENDPOINT_URL=...
+    VITE_APPWRITE_PROJECT_ID=...
+
+This keeps our secret values safe and not directly written in the code.
+
+
+Creating Config File
+--------------------
+
+Then, I created a file:
+    src/config/config.js
+
+This file gets all the values from `.env` using:
+    import.meta.env.VARIABLE_NAME
+
+I put these values in a single `config` object and exported it.  
+Now I can use `config.appwriteUrl`, `config.appwriteProjectId`, etc. anywhere in the app.
+
+This makes it easy to manage and change values in one place.
+
+
+Understanding "Vendor Lock-in"
+------------------------------
+
+Today I learned about a new concept: "Vendor Lock-in".
+
+This means: if we use one backend (like Appwrite) everywhere directly in our code,  
+then in future it is hard to change to another backend.
+
+To avoid this, I used the idea of "Services".
+
+    * A Service is a class where I define methods like signup, login, etc.
+    * The frontend will only use these methods.
+    * Frontend does not care what is inside the method.
+
+If I want to switch backend in future (like Firebase or Supabase),  
+I only need to change the code inside the service classes & its methods.  
+Frontend code will stay the same.
+
+This makes the project "more flexible" and easy to maintain.
+
+
+Creating Auth Service
+---------------------
+
+I created a folder:
+    src/appwrite
+
+Inside that, I created a file:
+    src/appwrite/auth.js
+
+In this file, I made a class `AuthService`.
+
+This class uses Appwrite's SDK to handle:
+    * Signup
+    * Login
+    * Get current user
+    * Logout
+
+These methods use `Account` and `Client` from Appwrite.
+I created one instance of `AuthService` and exported it as `authService`.
+
+Now any component in frontend can use this like:
+    authService.login()
+    authService.logout()
+    authService.getCurrentUser()
+
