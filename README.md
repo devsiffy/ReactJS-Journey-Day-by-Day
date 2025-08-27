@@ -323,3 +323,37 @@
 4. **Code Architecture Best Practices**
    - Concept of Vendor Lock-in
    - Using service classes to isolate backend logic and ensure flexibility
+
+---
+
+<h3>📅 Day 13</h3>
+
+> _"Build the foundation well, and scaling becomes effortless."_
+
+1. **Appwrite Service Class**
+
+   - Continued backend integration using Appwrite
+   - New file: `src/appwrite/utils.js`
+   - Define and export a `Service` class instance
+   - Initializes Appwrite client with core properties:
+     - `databases`: handles blog post operations
+     - `bucket`: handles file storage
+       <br />
+
+2. **Post Management (CRUD)**
+
+   - Methods:
+     - `createPost`
+     - `updatePost`
+     - `deletePost`
+     - `getPost`
+     - `getPosts`
+   - Blog post fields: `title`, `slug`, `content`, `featuredImage`, `status`, `userId`
+     <br />
+
+3. **File Management**
+
+   - Methods:
+     - `uploadFile`
+     - `deleteFile`
+     - `getFilePreview`

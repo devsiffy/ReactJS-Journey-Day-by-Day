@@ -1,0 +1,67 @@
+
+:: Day 13 ::
+
+=============
+Project Day 3
+=============
+
+Appwrite Utils File
+-------------------
+
+Today, I created a new file named utils.js inside the folder:  
+    src/appwrite
+
+In this file, I added a class called Service.
+
+Then, I created an object of this Service class and exported it.
+
+
+What is the Service Class?
+--------------------------
+
+The Service class is used to handle backend work using Appwrite.
+
+In this class, I did the following:
+    * I created a new Appwrite client.
+    * I connected this client to the project using appwrite URL and project ID.
+    * I created two properties:
+        - databases → used to create, update, delete, and get blog posts.
+        - bucket → used to upload, delete, and show files (like images).
+
+
+Post Methods (CRUD)
+-------------------
+
+I created some methods in the Service class to manage blog posts:
+    * createPost → to add a new post.
+    * updatePost → to change an existing post.
+    * deletePost → to remove a post.
+    * getPost → to get a single post by its slug.
+    * getPosts → to get all posts with status "active".
+
+Each post has data like:
+    * title
+    * slug
+    * content
+    * featuredImage
+    * status
+    * userId
+
+
+File Methods (Storage)
+----------------------
+
+I also added methods to manage files using Appwrite bucket:
+    * uploadFile → to upload a new file.
+    * deleteFile → to delete a file by fileId.
+    * getFilePreview → to get a small preview of the uploaded file.
+
+
+Important Notes
+--------------
+
+    * The config file is used to keep all Appwrite IDs (like database ID, bucket ID, etc.).
+    * I used "try-catch" in every method to handle errors safely.
+    * I used the "slug" as the document ID for posts. This makes the post URL clean.
+    * The service object is exported, so I can use it in any component.
+
