@@ -357,3 +357,31 @@
      - `uploadFile`
      - `deleteFile`
      - `getFilePreview`
+
+---
+
+<h3>📅 Day 14</h3>
+
+> _"State management and clean component structure are keys to building scalable apps."_
+
+1. **Redux Integration**
+
+   - Setting up `store.js` with `configureStore`
+   - Creating `authSlice` with `login` and `logout` reducers
+   - Wrapping `App` with `Provider` for store access
+     <br />
+
+2. **Routing Setup**
+
+   - Using `BrowserRouter` to enable routing
+   - Navigating with `useNavigate`
+   - Routing-aware components like `Link`
+     <br />
+
+3. **Component Architecture & Authentication Logic**
+
+   - Reusable components: `Header`, `Footer`, `Container`, `Input`, `Button`, `LogoutBtn`, `Logo`
+   - Barrel export using `index.js` for simplified imports
+   - Login status check on app load using `useEffect` and `authService`
+   - Conditional rendering based on authentication state
+   - Logout functionality with Redux dispatch

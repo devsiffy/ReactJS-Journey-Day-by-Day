@@ -43,16 +43,12 @@ export class AuthService {
 
   async getCurrentUser() {
     try {
-      const user = await this.account.get();
-
-      if (!user) {
-        return null;
-      }
-
-      return user;
+      return await this.account.get();
     } catch (error) {
       console.log("APPWRITE SERVICE ERROR :: ", error);
     }
+
+    return null;
   }
 
   async logout() {

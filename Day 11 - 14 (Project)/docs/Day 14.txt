@@ -1,0 +1,177 @@
+
+:: Day 14 ::
+
+
+=============
+Project Day 4
+=============
+
+Redux Store Setup
+-----------------
+
+Today, I added Redux to the project. Redux helps to manage the app state in one central place.
+
+I created a folder named "store" and inside it:
+
+    * I created a file `store.js` and used `configureStore` from Redux Toolkit to create the store.
+    * I created a file `authSlice.js` to manage user login status.
+
+Inside `authSlice.js`:
+
+    * I defined initial state with `status` and `userData`.
+    * I created two reducers:
+        - login → sets user as logged in and saves user data.
+        - logout → sets user as logged out and clears user data.
+
+In `main.jsx`, I wrapped the whole App with:
+
+    * `Provider` from `react-redux` to provide the Redux store.
+    * `Router` from `react-router-dom` to handle routing.
+
+Now the Redux store is ready and available for all components.
+
+
+Components Created
+------------------
+
+I created many reusable UI components inside the `src/components` folder. These components help build different parts of the UI easily.
+
+    * Container.jsx → used to wrap content with max width and padding.
+    * Header.jsx → contains the navigation bar.
+    * LogoutBtn.jsx → button to logout the user.
+    * Footer.jsx → footer area of the website.
+    * Input.jsx → input field with label and custom styling.
+    * Button.jsx → reusable button with styling options.
+    * Logo.jsx → placeholder logo.
+    * index.js → imports all components and exports them together for easy import.
+
+Using `index.js`, I can now import components like:
+
+    import { Header, Footer } from "./components";
+
+This makes the code cleaner and easier to manage.
+
+
+Logic Inside Components
+-----------------------
+
+In `Header.jsx`:
+
+    * Used `useSelector` to check if user is logged in.
+    * Showed different menu items based on login status.
+    * Used `useNavigate` to change routes when button is clicked.
+    * Showed Logout button if user is logged in.
+
+In `LogoutBtn.jsx`:
+
+    * On click, it calls `authService.logout()`.
+    * Then it dispatches the `logout()` action from Redux.
+
+This keeps the logout logic separate and easy to manage.
+
+
+Changes Done in App.jsx
+-----------------------
+
+I updated `App.jsx` to check if the user is already logged in or not.
+
+    * Used `useEffect` to run logic when app loads.
+    * Called `authService.getCurrentUser()` to check user.
+    * If user exists, I dispatch `login()` with user data.
+    * If not, I dispatch `logout()`.
+    * Used `useState` to control loading state.
+
+Until user status is checked, it shows "Loading...". After that, it renders:
+
+    * Header
+    * Main content area
+    * Footer
+
+This helps show correct UI based on user login status.
+
+
+Changes Done in main.jsx
+------------------------
+
+In `main.jsx`, I wrapped the `App` component with:
+
+    * `Provider` → gives access to Redux store.
+    * `Router` → enables routing in the app.
+
+This is the main entry point of the app.
+
+Before rendering, I also removed `<StrictMode>` for now. It helps during debugging.
+
+This setup allows the whole app to use both Redux and Routing features.
+
+
+Small but Important Concepts
+----------------------------
+
+Here are some useful React and Redux tools used today. These are small features but very helpful and good to know, especially for interviews and real-world projects.
+
+    * useNavigate (from react-router-dom)
+        → Helps navigate the user to another route (page) from JavaScript.
+        → Example: navigate("/login") will take the user to the login page.
+
+    * useSelector (from react-redux)
+        → Lets you read data from the Redux store inside a React component.
+        → Example: useSelector((state) => state.auth.status)
+
+    * useDispatch (from react-redux)
+        → Lets you dispatch (send) an action to the Redux store.
+        → Example: dispatch(login({ userData }))
+
+    * Link (from react-router-dom)
+        → Replaces the normal anchor tag <a>. Does not reload the page.
+        → Example: <Link to="/about">About</Link>
+
+    * useEffect (from react)
+        → Runs some code when the component is mounted or when something changes.
+        → Mostly used for API calls or initial setup.
+
+    * useState (from react)
+        → Used to add local state in functional components.
+        → Example: const [loading, setLoading] = useState(true)
+
+    * useId (from react)
+        → Creates a unique ID every time the component renders.
+        → Useful in forms for matching label and input fields.
+
+    * forwardRef (from react)
+        → Lets a parent component pass a ref to a child component.
+        → Used in `Input.jsx` to allow the parent to focus the input or read its value directly.
+        → Example: React.forwardRef((props, ref) => <input ref={ref} {...props} />)
+
+    * createSlice (from @reduxjs/toolkit)
+        → Helps create Redux logic easily with state and reducers in one file.
+        → You define initialState and actions like login and logout here.
+
+    * configureStore (from @reduxjs/toolkit)
+        → Creates the Redux store using slices.
+        → Example: configureStore({ reducer: { auth: authSlice } })
+
+    * Provider (from react-redux)
+        → Wraps the entire app and connects it to the Redux store.
+        → Without this, components cannot use Redux.
+
+    * BrowserRouter (from react-router-dom)
+        → Used as Router to wrap the App and enable routing.
+
+    * index.js barrel file (in components folder)
+        → This file re-exports all components from one place.
+        → Makes imports cleaner like:
+            import { Header, Footer } from "./components";
+
+    * Conditional Rendering
+        → Used in Header and App components to show or hide UI based on login status.
+        → Example: {authStatus && <LogoutBtn />} only shows logout if user is logged in.
+
+    * Spread Operator (...) in Props
+        → Used to pass down any extra props to an element.
+        → Example: <button {...props}>Click</button>
+
+    * ClassName Prop
+        → Used to apply Tailwind CSS or any other classes to HTML elements.
+        → Example: <div className="bg-blue-600 text-white"></div>
+
