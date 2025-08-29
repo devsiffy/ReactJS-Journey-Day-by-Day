@@ -385,3 +385,35 @@
    - Login status check on app load using `useEffect` and `authService`
    - Conditional rendering based on authentication state
    - Logout functionality with Redux dispatch
+
+---
+
+<h3>📅 Day 15</h3>
+
+> _"Build once, reuse everywhere – with secure access and clean structure."_
+
+1. **UI Components**
+
+   - `Select`: Reusable dropdown with `forwardRef` and Tailwind
+   - `PostCard`: Blog post preview with image and routing
+     <br />
+
+2. **Auth Forms & Protected Routes**
+
+   - Forms `Login & Signup` built with `react-hook-form`
+   - Redux for storing user state
+   - Navigation with `useNavigate()`
+   - Error handling and redirects
+   - `AuthLayout`: Protects routes based on login status
+     <br />
+
+3. **Form & State Utilities**
+
+   - `React Hook Form`: Unified input handling (`useForm`, `register`)
+   - `Redux Toolkit`: Manages auth state (`useDispatch`, `useSelector`)
+   - `Regex`: Validates email structure in forms
+     <br />
+
+4. **External Services**
+   - `Appwrite`: Handles auth and image previews
+   - `React Router`: For all navigation (`Link`, `useNavigate`)

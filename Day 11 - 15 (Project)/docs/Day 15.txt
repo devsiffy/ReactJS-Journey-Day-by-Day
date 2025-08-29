@@ -1,0 +1,158 @@
+
+:: Day 15 ::
+
+=============
+Project Day 5
+=============
+
+Select Component
+----------------
+
+This component is a reusable dropdown input.
+
+* It takes props like `options`, `label`, and `className`.
+* It uses `useId()` to create a unique ID for each select input.
+* If a label is passed, it connects with the select using the ID.
+* The `options` are shown using a `map()` loop.
+* It uses `React.forwardRef()` to allow form libraries like `react-hook-form` to use this component easily.
+* Styling is added using Tailwind CSS.
+
+Why it is useful:
+    → Easy to reuse in forms  
+    → Works well with form libraries  
+    → Clean structure and design  
+
+
+PostCard Component
+------------------
+
+This component shows a blog post preview.
+
+* Shows the post's featured image and title.
+* Uses `Link` from `react-router-dom` to go to the post's detail page.
+* Gets the image URL using `appwriteService.getFilePreview()`.
+
+Why it is useful:
+    → Clean display of each post  
+    → Easy navigation to post detail page  
+
+
+Login Component
+---------------
+
+This is the sign-in form for users.
+
+Used libraries and features:
+* `react-hook-form` to manage form fields and handle form submission.
+* `authService.login()` to sign in the user.
+* If successful:
+    → Get current user data using `authService.getCurrentUser()`.
+    → Store user in Redux using `dispatch(authLogin(user))`.
+    → Redirect to homepage using `useNavigate()`.
+
+Input fields:
+    → Email  
+    → Password  
+
+Form validation using RegEx:
+* Email field uses a "RegEx" pattern to check if the email is in the correct format.
+
+    Example of RegEx used:
+        /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
+
+    This RegEx makes sure:
+        → Email starts with characters (letters or numbers)  
+        → Has a valid domain like .com, .net, etc.  
+        → Only allows valid symbols like dot or hyphen  
+
+* Password field is required but does not have RegEx.
+
+Error handling:
+* Shows error messages if login fails (wrong email or password).
+* Errors are displayed clearly to the user.
+
+Other features:
+* Link to Signup page if the user does not have an account.
+* Reuses components like `Input`, `Button`, and `Logo`.
+
+
+Signup Component
+----------------
+
+This is the registration form for new users.
+
+Used features:
+* `react-hook-form` for form control and validation.
+* On submit:
+    → Calls `authService.createAccount()` to create a new user.
+    → Then fetches the current user using `authService.getCurrentUser()`.
+    → Saves user in Redux using `dispatch(login(user))`.
+    → Redirects to homepage.
+
+Input fields:
+    → Full name  
+    → Email (validated with RegEx)  
+    → Password  
+
+Form validation:
+* All fields are required.
+* "Email field uses RegEx" (same as in login) to check for a valid email format.
+* Password is required but not validated with RegEx.
+
+Error handling:
+* If account creation fails, shows error message.
+
+Other features:
+* Link to Login page if user already has an account.
+* Layout and style are same as Login for a consistent user experience.
+
+
+AuthLayout Component
+--------------------
+
+This is a layout wrapper to protect certain routes in the app.
+
+What it does:
+* Checks user login status using `useSelector()` to get `auth.status` from Redux.
+* If a route needs login and the user is "not logged in":
+    → Redirects to `/login`
+
+* If a route should not be accessed when logged in (like login/signup page) and user "is already logged in":
+    → Redirects to homepage
+
+* Shows "Loading..." while checking user status.
+
+Why it is important:
+    → Helps to protect private pages  
+    → Keeps app more secure and user-friendly  
+
+
+=======================
+Extra Important Points
+=======================
+
+* "React Hook Form":
+    → Used in both Login and Signup  
+    → Helps with easy input handling and validation  
+    → `useForm()` is used to control the form  
+    → `register()` connects inputs  
+    → `handleSubmit()` runs form submission  
+    → Works well with custom components like `Input` and `Select`  
+
+* "Regex Validation":
+    → Email is checked using a "regular expression (RegEx)" pattern  
+    → Prevents users from entering invalid email formats  
+    → A common and important practice in real-world apps  
+
+* "Redux Toolkit":
+    → Used to save login status and user data  
+    → `useDispatch()` sends actions  
+    → `useSelector()` reads data from the store  
+
+* "Appwrite":
+    → Used for authentication (login, signup)  
+    → Also used to get post image previews  
+
+* "React Router":
+    → `Link` is used for navigation (e.g. PostCard, Login/Signup links)  
+    → `useNavigate()` helps redirect users after login or signup  
