@@ -1,0 +1,119 @@
+
+:: Day 16 ::
+
+=============
+Project Day 6
+=============
+
+TinyMCE Editor with React Hook Form
+-----------------------------------
+
+Today, I created a file at:
+    src/components/RTE.jsx
+
+This file contains a "Rich Text Editor (RTE)" using TinyMCE.
+
+TinyMCE is a WYSIWYG editor (What You See Is What You Get). It lets users write and format text like in MS Word. Basically no need to write the underlying code (such as HTML).
+
+I used "React Hook Form" and "Controller" to connect the TinyMCE editor with the form state.
+
+* The `Editor` comes from `@tinymce/tinymce-react`.
+* The `Controller` comes from `react-hook-form`.
+
+TinyMCE is set up with:
+    * height = 500
+    * toolbar buttons (undo, redo, text styles, lists, image, media, table, etc.)
+    * plugins like code view, image, media, table, etc.
+    * custom CSS style inside the editor
+
+The editor uses `onEditorChange` to update the form when the user types or edits content.
+
+
+Post Form to Create and Edit Posts
+----------------------------------
+
+I also created a file at:
+    src/components/post-form/PostForm.jsx
+
+This is a form for "creating or editing blog posts".
+
+It uses "React Hook Form" to manage form fields. It supports both:
+    * Create Post
+    * Edit Post
+
+Form includes these input fields:
+    * Title
+    * Slug
+    * Content (TinyMCE Editor)
+    * Featured Image (File Upload)
+    * Status (Select dropdown: active or inactive)
+
+
+Important Concepts
+------------------
+
+→ "React Hook Form"
+
+* Used `useForm()` to handle form state.
+* Fields are registered using `register()`.
+* Used `control` and `Controller` to manage TinyMCE editor.
+* Used `watch()` to observe changes in the "title" field.
+* Used `setValue()` to update the "slug" automatically when title changes.
+* Used `handleSubmit()` to handle form submission.
+
+→ "Custom Slug Generator"
+
+* A function called `slugTransform` converts the post title into a URL-friendly slug.
+* It removes special characters, trims spaces, and changes everything to lowercase.
+
+→ "Image Upload using Appwrite"
+
+* If the form is for a new post:
+      - Upload image file to Appwrite using `appwriteService.uploadFile()`
+      - Save returned file ID in post data
+
+* If editing an existing post:
+      - Check if a new image is uploaded
+      - If yes, delete the old image using `appwriteService.deleteFile()`
+      - Upload the new image and update the post with new image ID
+
+→ "Post Create and Update Logic"
+
+* If the `post` prop exists, update the post using `appwriteService.updatePost()`
+* If `post` does not exist, create a new post using `appwriteService.createPost()`
+* After success, navigate to the post page using React Router
+
+→ "React Hooks"
+
+* Used `useEffect()` to listen for changes in the title field and auto-generate the slug.
+* Used `useCallback()` for the `slugTransform` function to avoid re-creating it on every render.
+
+→ "Conditional UI"
+
+* The button text and color change depending on whether the post is being created or updated.
+* The form input for image is "required only when creating a post".
+
+
+Extra Notes
+-----------
+
+→ "What is Controller in React Hook Form?"
+
+    - It's used to connect custom components (like TinyMCE) with form state.
+    - It helps manage input values and validation for components that don't use `ref`.
+
+→ "Why use slug?"
+
+    - A slug is a part of a URL that identifies a post.
+    - It should be short, clean, and user-friendly (like "my-first-post").
+
+→ "What is Appwrite used for here?"
+
+    - Appwrite is the backend-as-a-service.
+    - We use it for storing images, creating and updating posts, and file management.
+
+→ "Why split components?"
+
+    - RTE is created separately in `RTE.jsx` for reusability.
+    - This keeps the code clean and easy to manage.
+

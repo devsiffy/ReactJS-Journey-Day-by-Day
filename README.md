@@ -417,3 +417,30 @@
 4. **External Services**
    - `Appwrite`: Handles auth and image previews
    - `React Router`: For all navigation (`Link`, `useNavigate`)
+
+---
+
+<h3>📅 Day 16</h3>
+
+> _"Focus on writing clean, reusable components to scale your project efficiently."_
+
+1. **TinyMCE Editor with React Hook Form**
+
+   - Integration of TinyMCE as a Rich Text Editor (RTE)
+   - Custom toolbar, plugins, and styling
+   - Controlled using `Controller` from `react-hook-form`
+     <br />
+
+2. **Post Form to Create and Edit Posts**
+
+   - Form setup for both creating and editing blog posts
+   - Includes fields like Title, Slug, Content, Image, and Status
+   - Uses TinyMCE as the content input
+     <br />
+
+3. **Important Concepts**
+
+   - React Hook Form: `useForm`, `Controller`, `handleSubmit`, `watch`, `setValue`
+   - Slug Generator: Converts titles to URL-friendly slugs
+   - Image Upload with Appwrite: Handles new uploads and updates
+   - Post Logic: Conditional create or update using Appwrite services
