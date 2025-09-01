@@ -1,0 +1,129 @@
+
+:: Day 17 ::
+
+
+=============
+Project Day 7
+=============
+
+
+Pages Structure
+---------------
+
+On Day 7, I organized the pages of the project. I created a new folder named:
+    src/pages
+
+Inside this folder, I created different files. Each file is a page for the website.
+
+Here are the pages I created:
+    * Login
+    * Signup
+    * Home
+    * AllPosts
+    * EditPost
+    * Post
+
+Each page file is a React component. These components are connected using React Router.
+
+
+Page Descriptions
+-----------------
+
+→ Login.jsx
+
+    * Shows the login form.
+    * Uses the Login component from components folder.
+    * This page is for users to log into their account.
+
+→ Signup.jsx
+
+    * Shows the signup form.
+    * Uses the Signup component from components folder.
+    * This page is for creating a new account.
+
+→ Home.jsx
+
+    * It loads and shows a list of blog posts.
+    * Uses PostCard and Container components.
+    * If the user is not logged in, it tells them to log in to view posts.
+
+→ AllPosts.jsx
+
+    * It also loads and displays all posts.
+    * Uses useEffect to get posts from Appwrite.
+    * Shows each post using PostCard component.
+    * Similar to Home, but may be used in admin or user panel.
+
+→ EditPost.jsx
+
+    * For editing an existing post.
+    * Gets the post using the post ID from the URL.
+    * Uses useParams to read post ID (called "slug").
+    * Uses PostForm component to edit the post.
+
+→ Post.jsx
+
+    * Shows a single post in full detail.
+    * Uses the post ID (slug) from the URL.
+    * Uses parse() to show HTML content inside the post.
+    * If the user is the author, they can edit or delete the post.
+    * Shows edit and delete buttons for the author only.
+
+
+React Router Setup
+------------------
+
+I used "react-router-dom" to set up routing in the app.
+
+Routing is done in:
+    src/main.jsx
+
+Main features of this routing setup:
+    * Used createBrowserRouter from react-router-dom.
+    * Created paths for each page:
+        - "/" → Home
+        - "/login" → Login
+        - "/signup" → Signup
+        - "/all-posts" → AllPosts
+        - "/add-post" → AddPost (not covered today)
+        - "/edit-post/:slug" → EditPost
+        - "/post/:slug" → Post
+
+Each route is connected to a component that should be shown when the user goes to that URL.
+
+Some routes are protected using:
+    AuthLayout component
+
+
+AuthLayout (Protected Routes)
+-----------------------------
+
+    * AuthLayout is used to protect routes.
+    * It checks if the user is logged in.
+    * If the user is not logged in, they are redirected to login page.
+    * If the user is already logged in and tries to go to login/signup page, they are redirected to home.
+    * It uses Redux (useSelector) to get the user's auth status.
+
+This makes sure that:
+    * Only logged-in users can access protected pages like AllPosts or EditPost.
+    * Logged-out users can only access login or signup.
+
+Example usage in main.jsx:
+    AuthLayout authentication
+        → Only allows logged-in users.
+
+    AuthLayout authentication={false}
+        → Only allows logged-out users.
+
+
+What I Learned
+--------------
+
+    * How to organize pages in React app using src/pages.
+    * How to create simple page components.
+    * How to fetch and show data (like blog posts) using useEffect.
+    * How to use useParams and useNavigate for route handling.
+    * How to use Redux state (useSelector) to protect routes.
+    * How to protect routes using a wrapper component (AuthLayout).
+    * How to create a full routing system using react-router-dom.
+

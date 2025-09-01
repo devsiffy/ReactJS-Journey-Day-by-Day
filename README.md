@@ -444,3 +444,41 @@
    - Slug Generator: Converts titles to URL-friendly slugs
    - Image Upload with Appwrite: Handles new uploads and updates
    - Post Logic: Conditional create or update using Appwrite services
+
+---
+
+<h3>📅 Day 17</h3>
+
+> _"Structure brings clarity. Clarity brings progress."_
+
+1. **Pages Structure**
+
+   - Folder setup under `src/pages`
+   - Created main page components (Login, Signup, Home, etc.)
+   - Each page linked via React Router  
+     <br />
+
+2. **Page Descriptions**
+
+   - `Login.jsx` – Login form using component
+   - `Signup.jsx` – Signup form with inputs
+   - `Home.jsx` – Displays blog post list
+   - `AllPosts.jsx` – Loads all blog posts
+   - `EditPost.jsx` – Allows editing a post via ID
+   - `Post.jsx` – Shows full post details and actions  
+     <br />
+
+3. **React Router Setup**
+
+   - Routing defined in `main.jsx`
+   - Used `createBrowserRouter` from `react-router-dom`
+   - Routes for Home, Login, Signup, AllPosts, EditPost, Post
+   - Protected and public routes with `AuthLayout`  
+     <br />
+
+4. **AuthLayout (Protected Routes)**
+
+   - Guards routes based on auth state
+   - Redirects users accordingly
+   - Uses Redux `useSelector` for checking login
+   - Handles access for both logged-in and logged-out users
