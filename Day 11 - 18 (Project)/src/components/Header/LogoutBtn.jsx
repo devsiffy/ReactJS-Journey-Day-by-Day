@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import authService from "../../appwrite/auth";
 import { logout } from "../../store/authSlice";
 
-const LogoutBtn = () => {
+const LogoutBtn = ({ className = "" }) => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -13,7 +13,9 @@ const LogoutBtn = () => {
 
   return (
     <>
-      <button onClick={handleLogout}>Logout</button>
+      <button onClick={handleLogout} className={className}>
+        Logout
+      </button>
     </>
   );
 };

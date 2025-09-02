@@ -97,7 +97,7 @@ export class Service {
 
   async uploadFile(file) {
     try {
-      return await this.bucket.updateFile(
+      return await this.bucket.createFile(
         config.appwriteBucketId,
         ID.unique(),
         file
@@ -119,7 +119,7 @@ export class Service {
   }
 
   getFilePreview(fileId) {
-    return this.bucket.getFilePreview(config.appwriteBucketId, fileId);
+    return this.bucket.getFileView(config.appwriteBucketId, fileId);
   }
 }
 

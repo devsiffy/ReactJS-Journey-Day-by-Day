@@ -482,3 +482,30 @@
    - Redirects users accordingly
    - Uses Redux `useSelector` for checking login
    - Handles access for both logged-in and logged-out users
+
+---
+
+<h3>📅 Day 18</h3>
+
+> _"Debugging is twice as hard as writing the code in the first place."_
+
+1. **Start Running the App**
+
+   - First time run the full app after 7 days of code
+   - Encountered multiple runtime errors and bugs
+     <br />
+
+2. **Debug and Fix Major Errors**
+
+   - Systematic error tracking and resolution across various files
+   - Add `<Outlet />` in App.jsx
+   - Wrong Import Path in main.jsx
+   - TinyMCE API Key Setup in RTE.jsx
+   - Image Preview Error:
+     - Switched from `getFilePreview()` to `getFileView()`
+     - Appwrite Storage Permission Settings for public access
+       <br />
+
+3. **Debug and Fix Minor Errors**
+   - Resolved various import, folder, and typo issues
+   - Refer to GitHub commits history for full list

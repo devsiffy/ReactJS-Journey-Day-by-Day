@@ -1,0 +1,105 @@
+
+:: Day 18 ::
+
+=============
+Project Day 8
+=============
+
+Start Running the App
+---------------------
+
+From Day 1 to Day 7, all the project code was written.
+But on Day 8, we finally ran the app for the first time.
+When we ran the app, many errors appeared.
+So the main task of Day 8 was to "debug" all the issues and "fix" all the errors to make the app run properly.
+We worked step by step to find problems in different files and solved them.
+
+
+Debug and Fix All Errors
+------------------------
+
+→ We found several big and small issues in the code.
+→ Below are the main errors we faced and how we fixed them.
+
+
+1. Add <Outlet /> in App.jsx
+----------------------------
+
+→ In the App.jsx file, the `<Outlet />` was not used correctly.
+→ Without `<Outlet />`, the pages added inside the router (in main.jsx) will not display inside the layout of App.
+→ So we placed `<Outlet />` inside the `<main>` tag of App component.
+→ This helped all child routes (like login, signup, home etc.) to show properly inside App layout.
+
+
+2. Wrong Import Path in main.jsx
+--------------------------------
+
+→ In main.jsx, the `<Login />` page was being imported from:
+    src/components/Login.jsx
+
+→ But the correct path is:
+    src/pages/Login.jsx
+
+→ This caused an error because React could not find the Login component.
+→ We fixed the import path and then it worked fine.
+
+
+3. TinyMCE API Key Setup in RTE.jsx
+-----------------------------------
+
+→ In RTE.jsx, we used the `apiKey` for TinyMCE editor.
+→ At first, we passed the API key directly as props.
+→ But this is not a good practice. It is better to store keys in the `.env` file.
+→ So we added the TinyMCE API key in the `.env` file.
+→ Then we used `config.js` to export it.
+
+→ Finally, we imported it in `RTE.jsx` like this:
+    config.tinymceRTEApiKey
+
+→ This is a safe and clean way to manage API keys.
+
+
+4. Image Preview Error in getFilePreview
+----------------------------------------
+
+→ In `utils.js`, we created a method called `getFilePreview`.
+
+→ This used the Appwrite method:
+    bucket.getFilePreview()
+
+→ But this method only works in the "paid plan" of Appwrite.
+→ So it returned an error.
+
+→ To fix this, we replaced it with:
+    bucket.getFileView()
+
+→ This method works in the free plan and gives a public URL of the image.
+→ Now the images show properly in the blog posts.
+
+
+5. Appwrite Storage Permission Settings
+---------------------------------------
+
+→ Even after using `getFileView()`, images may not show if permissions are not set.
+
+→ So we went to:
+    Appwrite Dashboard > Storage > Your Project > Settings > Permissions
+
+→ We changed the role to:
+    Any
+
+→ This gives public access to Create, Read, Update, Delete (CRUD) actions.
+→ This fixed the issue and allowed public access to post images.
+
+
+6. Minor Errors Fixed
+---------------------
+
+→ Some other small mistakes were fixed too.
+
+→ These include:
+    * Import mistakes
+    * Typos in file names or paths
+
+→ To see all small changes, check GitHub commit history for minor code changes
+
