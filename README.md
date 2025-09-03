@@ -509,3 +509,27 @@
 3. **Debug and Fix Minor Errors**
    - Resolved various import, folder, and typo issues
    - Refer to GitHub commits history for full list
+
+---
+
+<h3>📅 Day 19</h3>
+
+> _"Code is like humor. When you have to explain it, it’s bad."_
+
+1. **API Fundamentals**
+
+   - What is an API
+   - Role in frontend-backend communication
+     <br />
+
+2. **Working with APIs in React**
+
+   - Fetch vs Axios comparison
+   - Axios GET request with then() & catch()
+   - Best practices (useEffect, useState, error handling)
+     <br />
+
+3. **Handling CORS Issues**
+   - What is CORS
+   - Proxy setup in Vite
+   - Backend solutions (cors package, headers)
