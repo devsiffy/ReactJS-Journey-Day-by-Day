@@ -533,3 +533,37 @@
    - What is CORS
    - Proxy setup in Vite
    - Backend solutions (cors package, headers)
+
+---
+
+<h3>📅 Day 20</h3>
+
+> _"Backend and frontend must work in harmony to deliver seamless experiences."_
+
+1.  **Express Server Setup & Axios**
+
+    - Creating a basic Express.js server
+    - GET endpoint at `/api/products` with optional `search` query
+    - Benefits of using Axios for API calls
+    - Professional handling of requests, errors, and configurations
+      <br />
+
+2.  **Method 1: Basic API Call using Axios**
+
+    - Component: `Handle_API_1`
+    - Basic useEffect pattern for API calls
+    - Handles loading, error, and data states directly in component
+      <br />
+
+3.  **Method 2: Using a Custom Hook**
+
+    - Component: `Handle_API_2`
+    - Custom hook: `useProductsAPIs`
+    - Cleaner component code and reusable API logic
+      <br />
+
+4.  **Method 3: API Call with Search and Cancel Feature**
+
+    - Component: `Handle_API_3`
+    - Dynamic search handling with `AbortController`
+    - Preventing race conditions and cancelled request issues

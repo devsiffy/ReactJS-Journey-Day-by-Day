@@ -1,0 +1,136 @@
+
+:: Day 20 ::
+
+====================
+Express Server Setup
+====================
+
+To start working with APIs in React, we first need a backend server.
+In this example, we use "Express.js" to create a simple server.
+
+The server runs on "port 3000" and handles a GET request at:
+    /api/products
+
+When this endpoint is called, it returns "10 sample products".
+There is a small delay of "3 seconds" to simulate loading time.
+The server also supports a "search query".
+
+    Example:
+    /api/products?search=mouse
+
+This will return products that match the search term.
+
+
+======================
+Why Axios is Important
+======================
+
+Axios is a very popular tool in React projects.
+
+It helps to:
+    * Send GET, POST, PUT, DELETE requests easily
+    * Handle responses and errors properly
+    * Cancel requests if needed
+    * Use base URLs, headers, and interceptors (in advanced usage)
+
+We will learn step-by-step how to handle APIs professionally using Axios.
+Each method will help you understand different best practices.
+In the end, you will know the best way to call APIs in real-world projects.
+
+
+====================================
+Method 1: Basic API Call using Axios
+====================================
+
+
+Component: Handle_API_1
+-----------------------
+
+This is the "basic and direct" way to use Axios in a React component.
+
+It shows how to:
+    * Create a state for products, loading, and error
+    * Use useEffect to call API on component mount
+    * Use async function inside useEffect
+    * Show loading message while fetching data
+    * Show error message if request fails
+    * Display total number of products
+
+This is good for small components.
+But it repeats code if you have multiple API calls in different components.
+
+
+=============================
+Method 2: Using a Custom Hook
+=============================
+
+
+Component: Handle_API_2
+-----------------------
+
+This method uses a "custom hook" called:
+    useProductsAPIs
+
+It separates the logic of API calls from the component.
+
+This way:
+    * The component code becomes smaller and cleaner
+    * The same hook can be reused in other components
+    * Logic for loading, error, and product data is handled inside the hook
+
+Custom hooks are useful for organizing code and reusing logic.
+
+
+useProductsAPIs
+---------------
+
+A custom hook to fetch product data from an API
+It moves the logic (axios call, loading, error) outside the component
+Makes the code clean and reusable
+Takes one input: urlPath (like "/api/products")
+
+Returns 3 values:
+    → products
+    → loading
+    → error
+
+Handles:
+    - API call using axios
+    - Loading state
+    - Error handling
+
+
+Why use it?
+-----------
+
+Avoids repeating API logic
+Keeps components simple
+Easy to reuse with any API URL
+
+
+How to use it?
+--------------
+
+In your component:
+    const [products, loading, error] = useProductsAPIs("/api/products")
+
+
+=================================================
+Method 3: API Call with Search and Cancel Feature
+=================================================
+
+
+Component: Handle_API_3
+-----------------------
+
+This method shows how to handle "dynamic APIs" with search input.
+
+It also shows how to:
+    * Cancel old API request when the search value changes
+    * Avoid race conditions and unnecessary responses
+    * Use AbortController with Axios
+    * Use axios.isCancel to detect cancelled requests
+
+This method is "very important for real-time search" or any fast-changing input.
+It also shows the best practice of "cleanup function" in useEffect.
+
